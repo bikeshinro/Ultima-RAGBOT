@@ -1,4 +1,4 @@
-# Ultima — AI Assistant with RAG
+# Ultima — Production Floor AI Assistant
 
 Ultima is a production-floor AI assistant that uses **Retrieval-Augmented Generation (RAG)** to answer questions grounded in your own knowledge base. Users upload documents (PDF, DOCX, TXT), which are chunked, embedded, and stored in a vector database. When a question is asked, the most relevant chunks are retrieved and fed to an LLM to produce accurate, sourced answers.
 
