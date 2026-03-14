@@ -167,7 +167,7 @@ docker-compose up --build
 This starts MongoDB, Qdrant, Ollama, and the Streamlit app. Access the UI at [http://localhost:8501](http://localhost:8501).
 
 ---
-
+(Ultima.gif)
 ## How It Works
 
 ### Authentication
