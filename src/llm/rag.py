@@ -25,20 +25,7 @@ def answer(question: str, llm_provider, llm_model: str, embeddings, user_id: str
     if not contexts:
         return {"answer": "I could not find reliable information in the knowledge base for this query.", "contexts": []}
 
-    #user_prompt = build_user_prompt(question, contexts)
-    user_prompt = f"""
-    Use the following context to answer the question.
-    Format your response using this template:
-
-    ### Problem Statement
-    ### Possible Causes
-    ### Recommended Actions
-    ### Safety Notes
-    ### Sources
-
-    Question: {question}
-    Context: {contexts}
-    """
+    user_prompt = build_user_prompt(question, contexts)
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt}
