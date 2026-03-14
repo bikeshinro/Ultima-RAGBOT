@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  # --- Existing services ---
+  mongodb:
+    image: mongo
+    container_name: ultima_mongodb
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - ultima_mongo_data:/data/db
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: ultima_qdrant
+    restart: unless-stopped
+    ports:
+      - "6336:6333"
+    volumes:
+      - ultima_qdrant_data:/qdrant/storage
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ultima_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - "C:/Ollama/Models:/root/.ollama/models"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    command: ["serve"]
+
+  # --- New Streamlit service ---
+  streamlit:
+    build: ./  # assumes Dockerfile in project root
+    container_name: streamlit
+    restart: always
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    depends_on:
+      - mongodb
+      - qdrant
+      - ollama
+
+volumes:
+  ultima_mongo_data:
+  ultima_qdrant_data:
+  ollama:
+
+

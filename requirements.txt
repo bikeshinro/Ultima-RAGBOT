@@ -1,0 +1,17 @@
+streamlit
+pymongo
+qdrant-client
+pydantic
+python-dotenv
+bcrypt
+argon2-cffi
+sentence-transformers
+pypdf
+python-docx
+requests
+huggingface-hub
+tqdm
+uvicorn
+fastapi
+pyjwt
+openai
