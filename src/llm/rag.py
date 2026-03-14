@@ -4,7 +4,7 @@ from src.llm.embeddings import get_embeddings
 from src.llm.prompts import SYSTEM_PROMPT, build_user_prompt
 from src.config import settings
 
-def retrieve(question: str, embeddings, user_id: str | None = None, k: int = 3, threshold: float = 0.75):
+def retrieve(question: str, embeddings, user_id: str | None = None, k: int = 3, threshold: float = 0.15):
     q_vec = embeddings.embed_texts([question])[0]
     filters = {"user_id": user_id} if user_id else None
     hits = search(collection=settings.QDRANT_COLLECTION, vector=q_vec, limit=k, filters=filters)

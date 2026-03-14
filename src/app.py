@@ -74,7 +74,7 @@ selected = st.sidebar.selectbox("Select chat", options=["New chat"] + titles, in
 st.sidebar.subheader("Generation Settings")
 temperature = st.sidebar.slider("Temperature", 0.0, 1.0, 0.2, 0.05)
 top_k = st.sidebar.number_input("Top K documents", min_value=1, max_value=10, value=3)
-threshold = st.sidebar.slider("Score threshold", 0.0, 1.0, 0.75, 0.05)
+threshold = st.sidebar.slider("Score threshold", 0.0, 1.0, 0.15, 0.05)
 
 
 
